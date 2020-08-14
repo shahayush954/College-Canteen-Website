@@ -1,7 +1,8 @@
 # College-Canteen-Website
 
 A website developed for the college canteen as a part of Internship. The professors can use this website to book their orders online rather than using phone calls.
-The Project is built using HTML, Javascript, Bootstrap-CSS, and Php.
+
+The Project is built using HTML, Javascript, Bootstrap-CSS, Php and MySql.
 
 ## Directory Structure
 
