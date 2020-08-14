@@ -11,6 +11,7 @@ The Project is built using HTML, Javascript, Bootstrap-CSS, and Php.
 ## Main Features
 
   For Clients:
+  
     1. Login.
     2. Signup.
     3. Browse through canteen items.
@@ -21,6 +22,7 @@ The Project is built using HTML, Javascript, Bootstrap-CSS, and Php.
     8. Place order.
     
   For Canteen People:
+  
     1. Login.
     2. See all Orders.
     3. Cancel a particular order.
