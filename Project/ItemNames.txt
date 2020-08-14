@@ -1,0 +1,39 @@
+Tea
+Coffee
+Mango MilkShake
+
+Chinese Bhel
+Chinese Dosa
+Manchrian Noodles
+Noodles
+Schezwan Noodles
+Singapore Noodles
+
+Bhell Puri
+Dahi Puri
+Cheese Bhel Puri
+Pani Puri
+Sev Puri
+Sukha Bhel
+
+Sandwich
+Grill Sandwich
+Cheese Grill Sandwich
+
+Bread Butter
+Dahi Samosa
+Misal Pav
+Samosa Pav
+Samosa Usal
+Vada Pav
+Vada Usal
+
+Dosa
+Cheese Dosa
+Cheese Masala Dosa
+Chinese Dosa
+Idli
+Idli Fry
+Masala Dosa
+Medu Vada
+Mysore Dosa

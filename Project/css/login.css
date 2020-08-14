@@ -1,0 +1,21 @@
+
+.head{
+	text-align: center;
+	color: black;
+	opacity: 1.0;
+	font-size: 45px;
+}
+
+.nav-link:hover{
+    color: white;
+    background-color: green;
+}
+.nav-link{
+    border: 1px solid green;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.log input[type=password],input[type=email]{
+    width: 60%;
+}

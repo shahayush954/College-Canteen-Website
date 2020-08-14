@@ -1,0 +1,154 @@
+<?php
+
+session_start();
+
+$HOST = "localhost";
+$USER = "root";
+$PASS = "";
+$NAME = "db_example";
+
+
+
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$contact = $_POST['contact'];
+
+$query = "INSERT INTO `user` ( `fname`, `lname`, `user_email_id`, `user_password`, `user_phone_number`) VALUES ('".$fname."','".$lname."','".$email."','".$password."',".$contact.")";
+
+$link = mysqli_connect($HOST,$USER,$PASS,$NAME);
+
+if($link){
+  $result = mysqli_query($link,$query);
+}
+
+?>
+
+<!Doctype html>
+<html>
+<head>
+<title>Register</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial scale=1.0"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+    <style>
+      
+    </style>
+<body style="background-color: #dbdbdb;">
+    <div class="container-fluid">
+        <div class="row">
+			<div class="container head col-12">
+				<i class="fas fa-utensils " style="color: darkred"></i>
+				<b>KJSCE CANTEEN</b> 
+				<i class="fas fa-utensils " style="color: darkred"></i>
+			</div>
+		</div>
+        <div class="row">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-12">
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="canteen_homepage.html">Home</a>
+              </li>
+              <?php
+
+                if(isset($_SESSION['user'])){
+                echo "
+                <li class='nav-item'>
+                <a class='nav-link' href='logout.html'>".$_SESSION['user']."</a>
+                </li>
+                ";
+              }
+              else{
+              echo "
+                <li class='nav-item'>
+                <a class='nav-link' href='login.html'>Login</a>
+              </li>
+              ";
+            }
+
+              ?>
+              <?php
+
+              if(empty($_SESSION['user'])){
+                echo "
+                   <li class='nav-item'>
+                     <a class='nav-link' href='register.html'>Register</a>
+                  </li>
+                ";
+            }
+
+             ?> 
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Beverage</a>
+                      <a class="dropdown-item" href="#">Chat</a>
+                      <a class="dropdown-item" href="#">Chinese</a>
+                      <a class="dropdown-item" href="#">Fast Items</a>
+                      <a class="dropdown-item" href="#">Frankies</a>
+                      <a class="dropdown-item" href="#">Italian</a>
+                      <a class="dropdown-item" href="#">Lunch Items</a>
+                      <a class="dropdown-item" href="#">Rice</a>
+                      <a class="dropdown-item" href="#">Sandwich</a>
+                      <a class="dropdown-item" href="#">Snacks</a>
+                      <a class="dropdown-item" href="#">South-Indian</a>
+                    </div>
+                </li> 
+              <?php
+
+                  if(isset($_SESSION['user'])){
+                    echo "
+                      <li class='nav-item'><a class='nav-link' href='logout.html'>Logout</a></li>
+                    ";
+                }
+
+                ?>  
+
+                <li class="nav-item">
+             <a class="nav-link" href="cart.html" style="border:0px;"><i class="fas fa-shopping-cart fa-2x" style="color:white;"><span class="badge" style="background: #d9534f; border-radius: 50%;" id="notification"><?php  
+              if(isset($_SESSION['totalQuantity'])){
+                echo $_SESSION['totalQuantity'];
+              }
+              else{
+                echo "0";
+            }
+
+              ?></span></i>
+      </a>
+            </li>   
+            </ul>
+              <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-4 my-sm-0" type="submit">Search</button>
+             </form>
+          </div>  
+        </nav>
+
+</div>
+
+        <br>
+        <br>
+        <br>
+
+        <b><h1 align="center">You have been Successfully Registered</h1></b>
+
+        <br>
+        <br>
+        <br>
+
+        <p align="center"><a href="login.html"><button class="btn btn-primary" style="height: 50px; width: 100px;">Login</button></a></p>
+</div>
+</body>
+</html>

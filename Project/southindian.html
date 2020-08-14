@@ -1,0 +1,388 @@
+<?php
+
+session_start();
+$HOST = "localhost";
+$USER = "root";
+$PASS = "";
+$NAME = "db_example";
+
+
+
+$link = mysqli_connect($HOST,$USER,$PASS,$NAME);
+
+$query = "SELECT * FROM `items` WHERE `item_category` = 'South Indian'";
+
+$result = mysqli_query($link,$query);
+
+
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/menu_item.css">
+</head>
+<body style="background-color: #dbdbdb;">
+		<div class="row">
+			<div class="container head col-12">
+				<i class="fas fa-utensils " style="color: darkred"></i>
+				<b>KJSCE CANTEEN</b> 
+				<i class="fas fa-utensils " style="color: darkred"></i>
+			</div>
+		</div>
+        <div class="row">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-12">
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="canteen_homepage.html">Home</a>
+              </li>
+              <?php
+
+                if(isset($_SESSION['user'])){
+                echo "
+                <li class='nav-item'>
+                <a class='nav-link' href='logout.html'>".$_SESSION['user']."</a>
+                </li>
+                ";
+              }
+              else{
+              echo "
+                <li class='nav-item'>
+                <a class='nav-link' href='login.html'>Login</a>
+              </li>
+              ";
+            }
+
+              ?>
+              <?php
+
+              if(empty($_SESSION['user'])){
+                echo "
+                   <li class='nav-item'>
+                     <a class='nav-link' href='register.html'>Register</a>
+                  </li>
+                ";
+            }
+
+             ?>  
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Beverage</a>
+                      <a class="dropdown-item" href="#">Chat</a>
+                      <a class="dropdown-item" href="#">Chinese</a>
+                      <a class="dropdown-item" href="#">Fast Items</a>
+                      <a class="dropdown-item" href="#">Frankies</a>
+                      <a class="dropdown-item" href="#">Italian</a>
+                      <a class="dropdown-item" href="#">Lunch Items</a>
+                      <a class="dropdown-item" href="#">Rice</a>
+                      <a class="dropdown-item" href="#">Sandwich</a>
+                      <a class="dropdown-item" href="#">Snacks</a>
+                      <a class="dropdown-item" href="#">South-Indian</a>
+                    </div>
+                </li>
+            <?php
+
+                  if(isset($_SESSION['user'])){
+                    echo "
+                      <li class='nav-item'><a class='nav-link' href='logout.html'>Logout</a></li>
+                    ";
+                }
+
+                ?>
+             <li class="nav-item">
+             <a class="nav-link" href="register.html" style="border:0px;"><i class="fas fa-shopping-cart fa-2x" style="color:white;"><span class="badge" style="background: #d9534f; border-radius: 50%;" id="notification"><?php  
+              if(isset($_SESSION['totalQuantity'])){
+                echo $_SESSION['totalQuantity'];
+              }
+              else{
+                echo "0";
+            }
+
+              ?></span></i>
+			</a>
+            </li>   
+            </ul>
+                
+              <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-4 my-sm-0" type="submit">Search</button>
+             </form>
+          </div>  
+        </nav>
+                
+         </div>
+
+         <br>
+         <div class="container col-12 categories">
+          <b>South Indian:</b>
+         </div>
+
+         <br>
+<!--
+         <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Dosa.jpg" class="icon-img img-fluid">
+              <p class="title"><b>DOSA</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity1')">+</button>
+                         <input type="text" name="quantity1" class="textBox" value=1 id="quantity1">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity1')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="dosa_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity1')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Cheese_Dosa.jpg" class="icon-img img-fluid">
+              <p class="title"><b>CHEESE DOSA</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity2')">+</button>
+                         <input type="text" name="quantity2" class="textBox" value=1 id="quantity2">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity2')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="cheeseDosa_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity2')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+         <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Cheese_Masala_Dosa.jpg" class="icon-img img-fluid">
+              <p class="title"><b>CHEESE MASALA DOSA</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity3')">+</button>
+                         <input type="text" name="quantity3" class="textBox" value=1 id="quantity3">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity3')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="cheeseMaslaDosa_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity3')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Chineese_Dosa.jpg" class="icon-img img-fluid">
+              <p class="title"><b>CHINESE DOSA</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity4')">+</button>
+                         <input type="text" name="quantity4" class="textBox" value=1 id="quantity4">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity4')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="chineseDosa_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity4')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Idli.jpg" class="icon-img img-fluid">
+              <p class="title"><b>IDLI</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity5')">+</button>
+                         <input type="text" name="quantity5" class="textBox" value=1 id="quantity5">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity5')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="idli_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity5')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Idli_Fry.jpg" class="icon-img img-fluid">
+              <p class="title"><b>IDLI FRY</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity6')">+</button>
+                         <input type="text" name="quantity6" class="textBox" value=1 id="quantity6">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity6')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="idliFry_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity6')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+      <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Masala_Dosa.jpg" class="icon-img img-fluid">
+              <p class="title"><b>MASALA DOSA</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity7')">+</button>
+                         <input type="text" name="quantity7" class="textBox" value=1 id="quantity7">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity7')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="masalaDosa_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity7')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+                <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Medu_Vada.jpg" class="icon-img img-fluid">
+              <p class="title"><b>MEDU VADA</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity8')">+</button>
+                         <input type="text" name="quantity8" class="textBox" value=1 id="quantity8">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity8')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="meduVada_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity8')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+
+        <br>
+
+      <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-1"></div>
+            <div class="col-10 col-lg-8 col-sm-8 col-md-8 item">
+              <img src="images/Mysore_Dosa.jpg" class="icon-img img-fluid">
+              <p class="title"><b>MYSORE DOSA</b>
+                <div style="float: right;">
+                         <b class="selectQuantity">Select&nbsp;Quantity: </b>
+                         <button  class="add-to-cart" onclick="increase_quantity('quantity9')">+</button>
+                         <input type="text" name="quantity9" class="textBox" value=1 id="quantity9">
+                         <button class="add-to-cart" onclick="decrease_quantity('quantity9')">-</button>
+                </div>
+              </p>
+              <p class="title"><b id="mysoreDosa_availiblity">Availibility: YES</b>
+              <div style="float: right;">
+                  <button class="add-to-cart-btn" onclick="increase_notification('quantity9')">Add to Cart<i class="fas fa-shopping-cart" style="color:white;"></i></button>
+                </div>
+              </p>
+              <p class="title"><b>Price&nbsp;per&nbsp;unit:₹</b></p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-1"></div>
+        </div>
+      -->
+       <?php
+        while($row = mysqli_fetch_assoc($result)){
+          echo "
+            <div class='row'>
+            <div class='col-lg-2 col-md-2 col-sm-2 col-1'></div>
+            <div class='col-10 col-lg-8 col-sm-8 col-md-8 item'>
+            <form method='POST' action='cart.html?action=add&name=".$row["item_name"]."'>
+              <img src='data:image/jpeg;base64,".base64_encode($row["item_image"])."' class='icon-img img-fluid'>
+              <p class='title'><b>".$row['item_name']."</b>
+                <div style='float: right;'>
+                         <b class='selectQuantity'>Select&nbsp;Quantity: </b>
+                         <input type='number' class='textBox' name='quantity' value=1 style='width: 60px;'>
+                </div>
+              </p>
+              <p class='title'><b id='mangoMilkshake_availiblity'>Availibility: ".$row['item_availability']."</b>
+              <div style='float: right;'>
+                  <button type='submit' class='add-to-cart-btn'>Add to Cart<i class='fas fa-shopping-cart' style='color:white;'></i></button>
+                </div>
+              </p>
+              <p class='title'><b>Price&nbsp;per&nbsp;unit: ".$row['item_price']." ₹</b></p>
+            </div>
+            </form>
+            <div class='col-sm-2 col-md-2 col-lg-2 col-1'></div>
+        </div>
+        <br>
+
+          ";
+      }
+
+      ?>
+
+        <br>
+    </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+<script type="text/javascript" src="javascript/menu_item.js"></script>
+</html>

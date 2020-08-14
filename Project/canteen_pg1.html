@@ -1,0 +1,550 @@
+<!Doctype html>
+<html>
+<head>
+    <title>KJSCE CANTEEN</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width=initial scale,1.0"/>
+    <link rel="stylesheet" href="css/canteen_pg1.css" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+<body>
+    <div id="header">
+            <div id="logo"><img src="images/kjlogo.png">
+            </div>
+            
+
+            <div class="cutlery1"><i class="fas fa-utensils fa-2x"style="color: darkred"></i>
+            </div>
+            
+
+            <p>KJSCE CANTEEN</p>
+        <div class="cutlery2"><i class="fas fa-utensils fa-2x"style="color: darkred"></i></div>
+
+            <div id="form">
+            	<form> 
+                    <a href="#"><label><input type="button" value="Register"></label></a>
+                    <a href="#"><label><input type="button" value="Login"></label></a>
+                </form>
+            </div>
+    </div>
+
+
+<div id="container">
+    <div id="aside">
+        <ul>
+            <div class="title_categ"><li><p>Categories:</p></li></div>
+            <li><a href="#">Chat</a></li><!--links to be inserted of respective pages-->
+            <li><a href="#">Dosa</a></li>
+            <li><a href="#">Snacks</a></li>
+            <li><a href="#">Chinese</a></li>
+            <li><a href="#">Sandwich</a></li>
+        </ul>
+    </div>    
+    <div id="content">
+        <div id="inner_container">
+            <div class="item">
+                <img src="images/Bhel_Puri.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Bhel Puri 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹22
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Bhel Puri','bhelpuri')" >+</button>
+                        <button class="btn1" onclick="remove_from_cart('Bhel Puri','bhelpuri')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Bread_Butter.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Bread Butter 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Bread Butter','breadbutter')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Bread Butter','breadbutter')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Cheese_Bhel_Puri.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Cheese Bhel Puri 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Cheese Bhel Puri','cheesebhelpuri')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Cheese Bhel Puri','cheesebhelpuri')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Cheese_Dosa.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Cheese Dosa 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Cheese Dosa','cheesedosa')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Cheese Dosa','cheesedosa')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Cheese_Grill_Sandwich.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Cheese Grill Sandwich
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Cheese Grill Sandwich','cheesegrillsandwich')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Cheese Grill Sandwich','cheesegrillsandwich')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Cheese_Masala_Dosa.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Cheese Masala Dosa 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Cheese Masala Dosa','cheesemasaladosa')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Cheese Masala Dosa','cheesemasaladosa')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Chineese_Bhel.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Chineese Bhel 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Chineese Bhel','chineesebhel')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Chineese Bhel','chineesebhel')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Chineese_Dosa.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Chineese Dosa 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Chineese Dosa','chineesedosa')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Chineese Dosa','chineesedosa')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Dahi_Puri.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Dahi Puri 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Dahi Puri','dahipuri')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Dahi Puri','dahipuri')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Dahi_Samosa.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Dahi Samosa 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Dahi Samosa','dahisamosa')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Dahi Samosa','dahisamosa')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Dosa.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Dosa 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Dosa','dosa')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Dosa','dosa')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Garlic_Bread.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Garlic Bread 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Garlic Bread','garlicbread')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Garlic Bread','garlicbread')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Grill_Sandwich.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names">Grill Sandwich 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Grill Sandwich','grillsandwich')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Grill Sandwich','grillsandwich')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Idli.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Idli 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Idli','idli')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Idli','idli')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Idli_Fry.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Idli Fry
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Idli Fry','idlifry')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Idli Fry','idlifry')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Manchurian_Noodles.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Manchurian Noodles 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Manchurian Noodles','manchuriannoodles')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Manchurian Noodles','manchuriannoodles')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Masala_Dosa.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Masala Dosa 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Masala Dosa','masaladosa')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Masala Dosa','masaladosa')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Medu_Vada.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Medu Vada 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Medu Vada','meduvada')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Medu Vada','meduvada')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Misal_Pav.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Misal Pav 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Misal Pav','misalpav')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Misal Pav','misalpav')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Mysore_Dosa.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Mysore Dosa 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Mysore Dosa','mysoredosa')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Mysore Dosa','mysoredosa')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Noodles.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Noodles 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Noodles','noodles')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Noodles','noodles')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Pani_Puri.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Pani Puri 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Pani Puri','panipuri')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Pani Puri','panipuri')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Samosa_Pav.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Samosa Pav 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Samosa Pav','samosapav')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Samosa Pav','samosapav')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Samosa_Usal.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Samosa Usal
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Samosa Usal','samosausal')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Samosa Usal','samosausal')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Sandwich.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Sandwich 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Sandwich','sandwich')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Sandwich','sandwich')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Schezwan_Noodles.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Schezwan Noodles 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Schezwan noodles','schezwannoodles')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Schezwan noodles','schezwannoodles')">-</button>
+
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/Sev_Puri.jpg" class="menu-images">
+                <div class="banner">
+                    <p class="names"> Sev Puri 
+                        <br>
+                        Availablity: YES
+                        <br>
+                        Price: ₹
+                        <br>
+                        <button class="btn1" onclick="add_to_cart('Sev Puri','sevpuri')">+</button>
+                        <button class="btn1" onclick="remove_from_cart('Sev Puri','sevpuri')">-</button>
+
+                    </p>
+                </div>
+        </div>
+        <div class="item">
+        	<img src="images/Singapore_Noodles.jpg" class="menu-images">
+        	<div class="banner">
+        		<p class="names"> Singapore Noodles 
+        			<br>
+        			Availablity: YES
+        			<br>
+        			Price: ₹
+        			<br>
+        			<button class="btn1" onclick="add_to_cart('Singapore Noodles','singaporenoodles')">+</button>
+        			<button class="btn1" onclick="remove_from_cart('Singapore Noodles','singaporenoodles')">-</button>
+
+        		</p>
+        	</div>
+        </div>
+        <div class="item">
+        	<img src="images/Sukha_Bhel.jpg" class="menu-images">
+        	<div class="banner">
+        		<p class="names"> Sukha Bhel 
+        			<br>
+        			Availablity: YES
+        			<br>
+        			Price: ₹
+        			<br>
+        			<button class="btn1" onclick="add_to_cart('Sukha Bhel','sukhabhel')">+</button>
+        			<button class="btn1" onclick="remove_from_cart('Sukha Bhel','sukhabhel')">-</button>
+
+        		</p>
+        	</div>
+        </div>
+        <div class="item">
+        	<img src="images/Toast_Sandwich.jpg" class="menu-images">
+        	<div class="banner">
+        		<p class="names"> Toast Sandwich 
+        			<br>
+        			Availablity: YES
+        			<br>
+        			Price: ₹
+        			<br>
+        			<button class="btn1" onclick="add_to_cart('Toast Sandwich','toastsandwich')">+</button>
+        			<button class="btn1" onclick="remove_from_cart('Toast Sandwich','toastsandwich')">-</button>
+
+        		</p>
+        	</div>
+        </div>
+        <div class="item">
+        	<img src="images/Vada_Pav.jpg" class="menu-images">
+        	<div class="banner">
+        		<p class="names"> Vada Pav 
+        			<br>
+        			Availablity: YES
+        			<br>
+        			Price: ₹
+        			<br>
+        			<button class="btn1" onclick="add_to_cart('Vada Pav','vadapav')">+</button>
+        			<button class="btn1" onclick="remove_from_cart('Vada Pav','vadapav')">-</button>
+
+        		</p>
+        	</div>
+        </div>
+        <div class="item">
+        	<img src="images/Vada_Usal.jpg" class="menu-images">
+        	<div class="banner">
+        		<p class="names"> Vada Usal 
+        			<br>
+        			Availablity: YES
+        			<br>
+        			Price: ₹
+        			<br>
+        			<button class="btn1" onclick="add_to_cart('Vada Usal','vadausal')">+</button>
+        			<button class="btn1" onclick="remove_from_cart('Vada Usal','vadausal')">-</button>
+
+        		</p>
+        	</div>
+        </div>
+        <div class="item">
+        	<img src="images/Bhel_Puri.jpg" class="menu-images">
+        	<div class="banner">
+        		<p class="names"> Bhel Puri 
+        			<br>
+        			Availablity: YES
+        			<br>
+        			Price: ₹22
+        			<br>
+        			<button class="btn1" onclick="add_to_cart('','')">+</button>
+        			<button class="btn1" onclick="remove_from_cart('','')">-</button>
+
+        		</p>
+        	</div>
+        </div>
+    </div>
+    <div id="cart">
+        <div class="emo"><i class="fas fa-shopping-cart fa-2x" style="color: darkred"></i></div>
+        <div class="cart-font">Cart</div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="javascript/canteen_pg1.js"></script>
+</body>
+</html>
